@@ -1,4 +1,4 @@
-library flutter_utils;
+library flutter_utils_code;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

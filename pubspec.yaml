@@ -1,8 +1,8 @@
-name: flutter_utils
+name: flutter_utils_code
 description: A Flutter utils package
 version: 0.0.1
 author: Mr.pan <panzhoutao1@gmail.com>
-homepage: https://github.com/panzhoutao/flutter_utils
+homepage: https://github.com/panzhoutao/flutter_utils_code
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

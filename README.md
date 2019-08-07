@@ -1,4 +1,4 @@
-# flutter_utils
+# flutter_utils_code
 [![pub][pubSvg]][pub] 
 
 A Flutter utils package.
@@ -6,13 +6,13 @@ A Flutter utils package.
 ## Getting Started
 
 ## APIs
-* ### 正则相关 -> [flutter_utils.dart]
+* ### 正则相关 -> [flutter_utils_code.dart]
 ```
 isMobileExact:精确验证手机号
 ```
 
 
 [pubSvg]: https://img.shields.io/badge/pub-0.0.1-brightgreen
-[pub]: https://github.com/panzhoutao/flutter_utils
+[pub]: https://github.com/panzhoutao/flutter_utils_code
 
-[flutter_utils.dart]: https://github.com/panzhoutao/flutter_utils/blob/master/lib/flutter_utils.dart
+[flutter_utils.dart]: https://github.com/panzhoutao/flutter_utils/blob/master/lib/flutter_utils_code.dart
