@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## 0.0.1
 
-* TODO: Describe initial release.
+* initial release.
+* 添加正则类，包含手机号精准验证
+
+<!-- ## 0.0.2
+
+* 添加toast工具 -->
