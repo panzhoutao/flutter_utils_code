@@ -11,11 +11,25 @@ pub.dev地址：[flutter_utils_code-pub.dev]
 ```
 isMobileExact:精确验证手机号
 isMobileSimple:简单验证手机号
+isEmail:验证邮箱
 ```
+
+
 * ### 正则相关 -> Toast
 ```
 show: 显示
 ```
+
+
+* ### 栏相关 -> BarUtils
+```
+getStatusBarHeight: 获取状态栏高度
+```
+
+
+
+
+
 
 
 [pubSvg]: https://img.shields.io/badge/pub-0.0.1-brightgreen
