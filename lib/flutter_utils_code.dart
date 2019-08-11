@@ -1,20 +1,39 @@
 library flutter_utils_code;
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_utils_code/view/toast.dart';
+import 'constant/constant.dart';
 
 ///正则相关
 class RegexUtils {
 
-  ///大陆手机号码11位数，匹配格式：前三位固定格式+后8位任意数
-  /// 此方法中前三位格式有：
-  /// 13+任意数 * 15+除4的任意数 * 18+除1和4的任意数 * 17+除9的任意数 * 147
-  static bool isMobileExact(String str) {
-    return RegExp('^((13[0-9])|(15[^4])|(166)|(17[0-8])|(18[0-9])|(19[8-9])|(147,145))\\d{8}\$').hasMatch(str);
+  /// regex: 正则规则
+  static bool isMatch(final String regex, final String str) {
+    return str != null && str.length > 0 && RegExp(regex).hasMatch(str);
   }
 
+  ///简单验证手机号
+  static bool isMobileSimple(String str) {
+    return isMatch(RegexConstants.REGEX_MOBILE_SIMPLE, str);
+  }
+
+  ///精准校验手机号
+  static bool isMobileExact(String str) {
+    return isMatch(RegexConstants.REGEX_MOBILE_EXACT, str);
+  }
+
+  ///验证邮箱
+  static bool isEmail(String str){
+    return isMatch(RegexConstants.REGEX_EMAIL, str);
+  }
 }
+
+///------------------------------------------------------------------------------------------------------------------------
+
 ///toast
+///来源： toast: ^0.1.4
 class Toast {
   static final int LENGTH_SHORT = 1;
   static final int LENGTH_LONG = 2;
@@ -35,84 +54,18 @@ class Toast {
   }
 }
 
-class ToastView {
-  static final ToastView _singleton = new ToastView._internal();
+///------------------------------------------------------------------------------------------------------------------------
 
-  factory ToastView() {
-    return _singleton;
-  }
 
-  ToastView._internal();
+///栏相关
+class BarUtils {
 
-  static OverlayState overlayState;
-  static OverlayEntry _overlayEntry;
-  static bool _isVisible = false;
-
-  static void createView(String msg, BuildContext context, int duration, int gravity,
-      Color background, Color textColor, double backgroundRadius, Border border) async {
-    overlayState = Overlay.of(context);
-
-    Paint paint = Paint();
-    paint.strokeCap = StrokeCap.square;
-    paint.color = background;
-
-    _overlayEntry = new OverlayEntry(
-      builder: (BuildContext context) => ToastWidget(
-          widget: Container(
-            width: MediaQuery.of(context).size.width,
-            child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: background,
-                    borderRadius: BorderRadius.circular(backgroundRadius),
-                    border: border,
-                  ),
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-                  child:
-                      Text(msg, softWrap: true, style: TextStyle(fontSize: 15, color: textColor)),
-                )),
-          ),
-          gravity: gravity),
-    );
-    _isVisible = true;
-    overlayState.insert(_overlayEntry);
-    await new Future.delayed(Duration(seconds: duration == null ? Toast.LENGTH_SHORT : duration));
-    dismiss();
-  }
-
-  static dismiss() async {
-    if (!_isVisible) {
-      return;
-    }
-    _isVisible = false;
-    _overlayEntry?.remove();
+  ///获取状态栏高度
+  static double getStatusBarHeight(){
+    return MediaQueryData.fromWindow(window).padding.top;
   }
 }
 
-class ToastWidget extends StatelessWidget {
-  ToastWidget({
-    Key key,
-    @required this.widget,
-    @required this.gravity,
-  }) : super(key: key);
-
-  final Widget widget;
-  final int gravity;
-
-  @override
-  Widget build(BuildContext context) {
-    return new Positioned(
-        top: gravity == 2 ? 50 : null,
-        bottom: gravity == 0 ? 50 : null,
-        child: Material(
-          color: Colors.transparent,
-          child: widget,
-        ));
-  }
-}
 
 
 

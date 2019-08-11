@@ -2,17 +2,22 @@
 [![pub][pubSvg]][pub] 
 
 A Flutter utils package.
+pub.dev地址：[flutter_utils_code-pub.dev]
 
 ## Getting Started
 
 ## APIs
-* ### 正则相关 -> [flutter_utils_code.dart]
+* ### 正则相关 -> RegexUtils
 ```
 isMobileExact:精确验证手机号
+isMobileSimple:简单验证手机号
+```
+* ### 正则相关 -> Toast
+```
+show: 显示
 ```
 
 
 [pubSvg]: https://img.shields.io/badge/pub-0.0.1-brightgreen
 [pub]: https://github.com/panzhoutao/flutter_utils_code
-
-[flutter_utils.dart]: https://github.com/panzhoutao/flutter_utils/blob/master/lib/flutter_utils_code.dart
+[flutter_utils_code-pub.dev]: https://pub.dev/packages/flutter_utils_code
