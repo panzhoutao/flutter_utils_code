@@ -8,7 +8,6 @@ import 'constant/constant.dart';
 
 ///正则相关
 class RegexUtils {
-
   /// regex: 正则规则
   static bool isMatch(final String regex, final String str) {
     return str != null && str.length > 0 && RegExp(regex).hasMatch(str);
@@ -25,7 +24,7 @@ class RegexUtils {
   }
 
   ///验证邮箱
-  static bool isEmail(String str){
+  static bool isEmail(String str) {
     return isMatch(RegexConstants.REGEX_EMAIL, str);
   }
 }
@@ -49,23 +48,27 @@ class Toast {
       double backgroundRadius = 20,
       Border border}) {
     ToastView.dismiss();
-    ToastView.createView(
-        msg, context, duration, gravity, backgroundColor, textColor, backgroundRadius, border);
+    ToastView.createView(msg, context, duration, gravity, backgroundColor,
+        textColor, backgroundRadius, border);
   }
 }
 
 ///------------------------------------------------------------------------------------------------------------------------
 
-
 ///栏相关
 class BarUtils {
-
   ///获取状态栏高度
-  static double getStatusBarHeight(){
+  static double getStatusBarHeight() {
     return MediaQueryData.fromWindow(window).padding.top;
   }
 }
 
+///app相关
+class AppUtils {
 
+  ///判断app是否为debug
+  static bool isAppDebug() {
+    return !bool.fromEnvironment("dart.vm.product");
+  }
 
-
+}

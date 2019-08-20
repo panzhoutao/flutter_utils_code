@@ -1,3 +1,9 @@
+
+[pubSvg]: https://img.shields.io/badge/pub-0.0.3-brightgreen
+[pub]: https://github.com/panzhoutao/flutter_utils_code
+[flutter_utils_code-pub.dev]: https://pub.dev/packages/flutter_utils_code
+
+
 # flutter_utils_code
 [![pub][pubSvg]][pub] 
 
@@ -26,12 +32,9 @@ show: 显示
 getStatusBarHeight: 获取状态栏高度
 ```
 
+* ### app相关 -> AppUtils
+```
+isAppDebug: 判断app是否为debug
+```
 
 
-
-
-
-
-[pubSvg]: https://img.shields.io/badge/pub-0.0.1-brightgreen
-[pub]: https://github.com/panzhoutao/flutter_utils_code
-[flutter_utils_code-pub.dev]: https://pub.dev/packages/flutter_utils_code
