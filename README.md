@@ -32,9 +32,4 @@ show: 显示
 getStatusBarHeight: 获取状态栏高度
 ```
 
-* ### app相关 -> AppUtils
-```
-isAppDebug: 判断app是否为debug
-```
-
 
