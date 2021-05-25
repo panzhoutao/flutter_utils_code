@@ -16,3 +16,4 @@
 
 ## 0.0.5
 * 删除no_splash_factory类
+* 增加DurationExt扩展
