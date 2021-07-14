@@ -43,13 +43,14 @@ abstract class MSNetService {
   Future<ResultData> request<R>(
     String url, {
     Method method = Method.POST,
-    Map<String, dynamic>? params,
+    data,
+    @Deprecated('使用 queryParameters') Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParameters,
     String? filePath,
     String? fileName,
     String? fileSavePath,
   }) async {
     try {
-
       Response response;
 
       var headers = await getHeaders();
@@ -61,11 +62,17 @@ abstract class MSNetService {
 
       switch (method) {
         case Method.GET:
-          response =
-              await dio.get(getBasicSuffixUrl() + url, queryParameters: params);
+          response = await dio.get(
+            getBasicSuffixUrl() + url,
+            queryParameters: params ?? queryParameters,
+          );
           break;
         case Method.POST:
-          response = await dio.post(getBasicSuffixUrl() + url, data: params,);
+          response = await dio.post(
+            getBasicSuffixUrl() + url,
+            data: data,
+            queryParameters: params ?? queryParameters,
+          );
           break;
         case Method.UPLOAD:
           {

@@ -17,4 +17,12 @@ class FileUtils {
     return size + unitArr[index];
   }
 
+  ///根据路径获取文件名
+  static String getNameFromFilePath(String? path){
+    if(path == null){
+      return '';
+    }
+    return path.substring(path.lastIndexOf('/') + 1);
+  }
+
 }
