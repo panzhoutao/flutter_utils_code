@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 ///String扩展：
+@Deprecated('use string_extension.dart')
 extension StringExt on String {
   double toDouble() {
     return double.parse(this);

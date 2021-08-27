@@ -44,7 +44,7 @@ abstract class MSNetService {
     String url, {
     Method method = Method.POST,
     data,
-    @Deprecated('使用 queryParameters') Map<String, dynamic>? params,
+    @Deprecated('use queryParameters') Map<String, dynamic>? params,
     Map<String, dynamic>? queryParameters,
     String? filePath,
     String? fileName,

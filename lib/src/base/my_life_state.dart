@@ -7,6 +7,7 @@ final RouteObserver<Route> lifeObserver = RouteObserver();
 
 abstract class LifeState<T extends StatefulWidget> extends State<T>
     with WidgetsBindingObserver, RouteAware {
+
   @override
   void initState() {
     WidgetsBinding.instance!.addObserver(this);
