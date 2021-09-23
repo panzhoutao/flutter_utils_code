@@ -1,7 +1,7 @@
 
 ///
 class StringUtils {
-  static String? listToString(List list) {
+  static String? listToString(List? list) {
     if (list == null) {
       return null;
     }
