@@ -32,7 +32,7 @@ Function debounce(
       timer?.cancel();
     }
     timer = Timer(delay, () {
-      func?.call();
+      func.call();
     });
   };
   return target;
