@@ -17,3 +17,7 @@
 ## 0.0.5
 * 删除no_splash_factory类
 * 增加DurationExt扩展
+
+## 0.0.7
+* 删除dio
+* 增加函数防抖，函数节流
