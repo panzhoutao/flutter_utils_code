@@ -1,60 +1,149 @@
 import 'dart:async';
 
-///@Description:
-///@Author:         @Mr.pan
-///@CreateDate:     2021/9/23
+import 'package:flutter/material.dart';
 
-/// 函数防抖
-/// [func]: 要执行的方法
-/// [delay]: 要迟延的时长
-/// Example:
-/// Center(
-///     child: RaisedButton.icon(
-///       icon: Icon(Icons.add),
-///       label: Text('防抖'),
-///       onPressed: debounce(() {
-///         if (!mounted) {
-///           return;
-///         }
-///         setState(() {
-///           _count++;
-///         });
-///       }),
-///     ),
-///   ),
-Function debounce(
-  Function func, [
-  Duration delay = const Duration(milliseconds: 2000),
-]) {
-  Timer? timer;
-  Function target = () {
-    if (timer?.isActive ?? false) {
-      timer?.cancel();
-    }
-    timer = Timer(delay, () {
-      func.call();
-    });
-  };
-  return target;
+
+/// 防抖：n秒后执行；
+/// 节流：n秒内最多执行一次。
+
+///默认时长
+const _defaultDuration = Duration(milliseconds: 380);
+
+enum FilterType {
+  debounce,
+  throttle,
 }
 
-/// 函数节流
+typedef VoidFunction = void Function();
+
 ///
-/// [func]: 要执行的方法
-Function throttle(
-  Future Function()? func,
-) {
-  if (func == null) {
-    return func!;
+///  @override
+///   void dispose() {
+///     EventFilter.remove("tag");
+///     super.dispose();
+///   }
+///
+///   @override
+///   Widget build(BuildContext context) {
+///     return Scaffold(
+///
+///       body: GestureDetector(
+///         onTap: EventFilter.throttle(
+///           "tag",
+///           () {
+///             print("------------");
+///           },
+///         ),
+///         child: Text("按钮"),
+///       ),
+///     );
+///   }
+class EventFilter {
+  static Map<String, Timer> _wrappers = {};
+
+  ///防抖
+  static VoidFunction debounce(
+    String sign,
+    function, {
+    Duration duration = _defaultDuration,
+  }) {
+    return () {
+      execute(
+        sign,
+        function,
+        duration: duration,
+        filterType: FilterType.debounce,
+      );
+    };
   }
-  bool enable = true;
-  Function target = () {
-    if (enable == true) {
-      enable = false;
-      func().then((_) {
-        enable = true;
-      });
+
+  ///节流
+  static VoidFunction throttle(
+    String sign,
+    function, {
+    Duration duration = _defaultDuration,
+  }) {
+    return () {
+      execute(
+        sign,
+        function,
+        duration: duration,
+        filterType: FilterType.throttle,
+      );
+    };
+  }
+
+  static void execute(
+    String sign,
+    function, {
+    Duration duration = _defaultDuration,
+    FilterType filterType = FilterType.debounce,
+  }) {
+    switch (filterType) {
+      case FilterType.debounce:
+        _wrappers[sign]?.cancel();
+        break;
+      case FilterType.throttle:
+        if (_wrappers.containsKey(sign)) {
+          return;
+        } else {
+          function.call();
+        }
+        break;
     }
-  };
-  return target;
+
+    _wrappers[sign] = Timer(
+      duration,
+      () {
+        if (filterType == FilterType.debounce) {
+          function.call();
+        }
+        _wrappers[sign]?.cancel();
+        _wrappers.remove(sign);
+      },
+    );
+  }
+
+  ///在state的dispose方法里移除Timer
+  static void remove(String sign) {
+    if (_wrappers.containsKey(sign)) {
+      _wrappers[sign]?.cancel();
+      _wrappers.remove(sign);
+    }
+  }
+
+  ///移除所有Timer
+  static void clear() {
+    _wrappers.forEach((key, value) {
+      remove(key);
+    });
+    _wrappers.clear();
+  }
+
+  static void removeState(String hashString) {
+    _wrappers.removeWhere((key, value) => key.startsWith(hashString));
+  }
+}
+
+///State扩展类
+///每个State所有的防抖和节流都带有同样的前缀
+///方便管理和统一释放资源
+extension EventFilterExtension on State {
+  stateFilter(
+    String sign,
+    Function function, {
+    Duration duration = _defaultDuration,
+    FilterType filterType = FilterType.debounce,
+  }) {
+    EventFilter.execute(
+      "${this.hashCode.toString()}$sign",
+      function,
+      duration: duration,
+      filterType: filterType,
+    );
+  }
+
+  clearStateFilter() {
+    EventFilter.removeState(this.hashCode.toString());
+  }
 }

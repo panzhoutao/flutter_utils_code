@@ -4,7 +4,7 @@
 class RegexUtils {
   /// regex: 正则规则
   static bool isMatch(final String regex, final String str) {
-    return str != null && str.length > 0 && RegExp(regex).hasMatch(str);
+    return str.length > 0 && RegExp(regex).hasMatch(str);
   }
 
   ///简单验证手机号

@@ -52,10 +52,4 @@ class TimeUtils {
     return msgTime.year.toString()+"/"+msgTime.month.toString()+"/"+msgTime.day.toString();
   }
 
-  ///获取上下午
-  static String getAMPMStr(DateTime value){
-
-    return '';
-  }
-
 }
