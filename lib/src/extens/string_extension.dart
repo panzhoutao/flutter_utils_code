@@ -3,11 +3,11 @@
 ///@CreateDate:     2021/8/17
 extension StringExt on String? {
   double toDouble() {
-    return double.parse(this!);
+    return double.parse(this.toString());
   }
 
   int toInt() {
-    return int.parse(this!);
+    return int.parse(this.toString());
   }
 
   bool isChinaMobile() {
@@ -16,7 +16,11 @@ extension StringExt on String? {
   }
 
   bool isEmptyOrNull() {
-    return this == null || this!.trim().isEmpty;
+    if(this == null) {
+      return true;
+    } else {
+      return this.toString().trim().isEmpty;
+    }
   }
 
   ///用逗号隔开的string 转为 list
@@ -24,7 +28,7 @@ extension StringExt on String? {
     if (this.isEmptyOrNull()) {
       return [];
     } else {
-      return this!.split(',');
+      return this.toString().split(',');
     }
   }
 }
