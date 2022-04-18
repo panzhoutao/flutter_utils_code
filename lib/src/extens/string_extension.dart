@@ -10,6 +10,11 @@ extension StringExt on String? {
     return int.parse(this!);
   }
 
+  //为String类扩展首字母大写方法
+  String capitalize() {
+    return "${this?[0].toUpperCase()}${this?.substring(1)}";
+  }
+
   bool isChinaMobile() {
     return RegExp(r'^((1[0-9][0-9]))\d{8}$').hasMatch(this!);
     // return RegExp(r'^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0-9])|(19)[0-9])\d{8}$').hasMatch(this);
