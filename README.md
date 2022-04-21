@@ -24,7 +24,7 @@ isEmail:验证邮箱
 
 * ### 页面生命周期 -> LifeState
 ```
-
+需要在 MaterialApp -> navigatorObservers 注册 lifeObserver
 ```
 
 
