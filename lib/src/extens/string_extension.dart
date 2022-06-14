@@ -11,7 +11,7 @@ extension StringExt on String? {
   }
 
   //为String类扩展首字母大写方法
-  String firstCapitalize() {
+  String capitalizeFirst() {
     return "${this?[0].toUpperCase()}${this?.substring(1)}";
   }
 
