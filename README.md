@@ -39,7 +39,7 @@ toDouble: 转换double
 isChinaMobile: 判断中国手机号
 isEmptyOrNull: 空和null
 fromCommaToList: 用逗号隔开的string 转为 list
-capitalize:首字母大写方法
+capitalizeFirst:首字母大写方法
 ```
 
 * ### 函数防抖 -> EventFilter

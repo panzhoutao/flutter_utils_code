@@ -69,7 +69,6 @@ extension ListExt on List {
 
 ///Duration 扩展
 extension DurationExt on Duration {
-
   /// 1:10:00
   String toStringNoMicroseconds() {
     String twoDigits(int n) {
@@ -84,6 +83,12 @@ extension DurationExt on Duration {
         twoDigits(inMinutes.remainder(Duration.minutesPerHour));
     String twoDigitSeconds =
         twoDigits(inSeconds.remainder(Duration.secondsPerMinute));
-    return "$inHours:$twoDigitMinutes:$twoDigitSeconds";
+
+    String hourStr = '';
+    if (inHours > 0) {
+      hourStr = '$inHours:';
+    }
+
+    return "$hourStr$twoDigitMinutes:$twoDigitSeconds";
   }
 }
