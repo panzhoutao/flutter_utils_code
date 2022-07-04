@@ -27,3 +27,6 @@
 
 ## 0.0.10
 * 扩展string
+
+## 0.1.1
+* 修改DurationExt
