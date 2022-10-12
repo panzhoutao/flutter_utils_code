@@ -21,7 +21,7 @@ extension StringExt on String? {
   }
 
   bool isEmptyOrNull() {
-    if(this == null) {
+    if (this == null) {
       return true;
     } else {
       return this.toString().trim().isEmpty;
@@ -34,6 +34,15 @@ extension StringExt on String? {
       return [];
     } else {
       return this.toString().split(',');
+    }
+  }
+
+  /// 清楚全部空格
+  String trimAll() {
+    if (this.isEmptyOrNull()) {
+      return '';
+    } else {
+      return this!.replaceAll(RegExp(r"\s+\b|\b\s"), "");
     }
   }
 }
