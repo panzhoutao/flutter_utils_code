@@ -1,11 +1,11 @@
 name: flutter_utils_code
 description: A Flutter utils package
-version: 0.1.1
+version: 0.1.2
 #author: Mr.pan <panzhoutao1@gmail.com>
 homepage: https://github.com/panzhoutao/flutter_utils_code
 
 environment:
-  sdk: '>=2.17.0 <3.0.0'
+  sdk: '>=2.17.0 <4.0.0'
 
 dependencies:
   flutter:
