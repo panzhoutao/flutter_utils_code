@@ -52,4 +52,10 @@ class TimeUtils {
     return msgTime.year.toString()+"/"+msgTime.month.toString()+"/"+msgTime.day.toString();
   }
 
+  ///
+  static String formatDuration(Duration duration) {
+
+    return '';
+  }
+
 }

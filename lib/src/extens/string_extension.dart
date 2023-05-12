@@ -16,7 +16,7 @@ extension StringExt on String? {
   }
 
   bool isChinaMobile() {
-    return RegExp(r'^((1[0-9][0-9]))\d{8}$').hasMatch(this!);
+    return RegExp(r'^((1\d\d))\d{8}$').hasMatch(this!);
     // return RegExp(r'^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0-9])|(19)[0-9])\d{8}$').hasMatch(this);
   }
 
@@ -37,7 +37,7 @@ extension StringExt on String? {
     }
   }
 
-  /// 清楚全部空格
+  /// 清除全部空格
   String trimAll() {
     if (this.isEmptyOrNull()) {
       return '';

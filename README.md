@@ -1,5 +1,5 @@
 
-[pubSvg]: https://img.shields.io/badge/pub-0.0.3-brightgreen
+[pubSvg]: https://img.shields.io/badge/pub-0.1.1-brightgreen
 [pub]: https://github.com/panzhoutao/flutter_utils_code
 [flutter_utils_code-pub.dev]: https://pub.dev/packages/flutter_utils_code
 
@@ -40,6 +40,7 @@ isChinaMobile: 判断中国手机号
 isEmptyOrNull: 空和null
 fromCommaToList: 用逗号隔开的string 转为 list
 capitalizeFirst:首字母大写方法
+trimAll：清除全部空格
 ```
 
 * ### 函数防抖 -> EventFilter
