@@ -1,61 +1,27 @@
 
 
 class TimeUtils {
-
-  ///星期string
-  static getWeekStr(DateTime value) {
-    var weekStr = '';
-    switch (value.weekday) {
-      case 1:
-        weekStr = '周一';
-        break;
-      case 2:
-        weekStr = '周二';
-        break;
-      case 3:
-        weekStr = '周三';
-        break;
-      case 4:
-        weekStr = '周四';
-        break;
-      case 5:
-        weekStr = '周五';
-        break;
-      case 6:
-        weekStr = '周六';
-        break;
-      case 7:
-        weekStr = '周日';
-        break;
-    }
-    return weekStr;
-  }
-
-  ///将 unix 时间戳转换为特定时间文本，如年月日
-  static String convertTime(int timestamp) {
-    DateTime msgTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
-    DateTime nowTime = DateTime.now();
-
-    if(nowTime.year == msgTime.year) {//同一年
-      if(nowTime.month == msgTime.month) {//同一月
-        if(nowTime.day == msgTime.day) {//同一天 时:分
-          return msgTime.hour.toString()+":"+msgTime.minute.toString();
-        }else {
-          if(nowTime.day - msgTime.day == 1) {//昨天
-            return "昨天";
-          }else if(nowTime.day - msgTime.day < 7) {
-            return getWeekStr(msgTime);
-          }
-        }
-      }
-    }
-    return msgTime.year.toString()+"/"+msgTime.month.toString()+"/"+msgTime.day.toString();
-  }
-
-  ///
+  /// 将 Duration 格式化为不含语言特征的字符串，如 "11:22:33" 或 "22:33"
   static String formatDuration(Duration duration) {
+    String twoDigits(int n) {
+      if (n >= 10) return '$n';
+      return '0$n';
+    }
 
-    return '';
+    final hours = duration.inHours;
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+
+    final minutesStr = twoDigits(minutes.abs());
+    final secondsStr = twoDigits(seconds.abs());
+
+    final sign = duration.isNegative ? '-' : '';
+
+    if (hours.abs() > 0) {
+      return '$sign${hours.abs()}:$minutesStr:$secondsStr';
+    } else {
+      return '$sign$minutesStr:$secondsStr';
+    }
   }
 
   /// 是否是同一天
@@ -64,5 +30,4 @@ class TimeUtils {
         date1.month == date2.month &&
         date1.day == date2.day;
   }
-
 }

@@ -1,48 +1,48 @@
-///@Description: String扩展
-///@Author:         @Mr.pan
-///@CreateDate:     2021/8/17
+/// @Description: String? 扩展
+/// @Author:      @Mr.pan
 extension StringExt on String? {
-  double toDouble() {
-    return double.parse(this.toString());
+  /// 安全地转换为 double，解析失败时返回默认值
+  double toDouble({double defaultValue = 0.0}) {
+    if (this == null) return defaultValue;
+    return double.tryParse(this!) ?? defaultValue;
   }
 
-  int toInt() {
-    return int.parse(this.toString());
+  /// 安全地转换为 int，解析失败时返回默认值
+  int toInt({int defaultValue = 0}) {
+    if (this == null) return defaultValue;
+    return int.tryParse(this!) ?? defaultValue;
   }
 
-  //为String类扩展首字母大写方法
+  /// 安全地将首字母大写
   String capitalizeFirst() {
-    return "${this?[0].toUpperCase()}${this?.substring(1)}";
-  }
-
-  bool isChinaMobile() {
-    return RegExp(r'^((1\d\d))\d{8}$').hasMatch(this!);
-    // return RegExp(r'^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0-9])|(19)[0-9])\d{8}$').hasMatch(this);
-  }
-
-  bool isEmptyOrNull() {
-    if (this == null) {
-      return true;
-    } else {
-      return this.toString().trim().isEmpty;
-    }
-  }
-
-  ///用逗号隔开的string 转为 list
-  List<String> fromCommaToList() {
-    if (this.isEmptyOrNull()) {
-      return [];
-    } else {
-      return this.toString().split(',');
-    }
-  }
-
-  /// 清除全部空格
-  String trimAll() {
-    if (this.isEmptyOrNull()) {
+    if (this == null || this!.isEmpty) {
       return '';
-    } else {
-      return this!.replaceAll(RegExp(r"\s+\b|\b\s"), "");
     }
+    return '${this![0].toUpperCase()}${this!.substring(1)}';
+  }
+
+  /// 安全地校验中国手机号格式
+  bool isChinaMobile() {
+    if (this == null) return false;
+    return RegExp(r'^((1\d\d))\d{8}$').hasMatch(this!);
+  }
+
+  /// 判断是否为 null、空串或仅包含空白字符
+  bool isEmptyOrNull() {
+    return this == null || this!.trim().isEmpty;
+  }
+
+  /// 将以逗号隔开的字符串安全地转换为列表
+  List<String> fromCommaToList() {
+    if (isEmptyOrNull()) {
+      return [];
+    }
+    return this!.split(',');
+  }
+
+  /// 清除字符串中的所有空白字符
+  String trimAll() {
+    if (this == null) return '';
+    return this!.replaceAll(RegExp(r'\s+'), '');
   }
 }

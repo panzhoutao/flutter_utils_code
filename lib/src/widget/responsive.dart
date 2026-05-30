@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
 
-///
 /// 响应式布局
 /// 根据宽度自动区分设备类型
 /// 显示不同尺寸的布局
-///
-/// 下面布局同样可以做这件事情
-/// Container(
-///   child: LayoutBuilder(context, contraints){
-///     if(contraints.maxWidth > 600){
-/// 		...
-/// 	}
-///   }
-/// )
-///
 class Responsive extends StatelessWidget {
-  ///手机
+  /// 手机
   final Widget? mobile;
 
-  ///平板
+  /// 平板
   final Widget? tablet;
 
-  ///桌面
+  /// 桌面
   final Widget? desktop;
 
   const Responsive({
@@ -43,18 +32,14 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size _size = MediaQuery.of(context).size;
+    final double width = MediaQuery.of(context).size.width;
 
-    Widget? _widget;
-
-    if (_size.width >= 1100) {
-      _widget = desktop;
-    } else if (_size.width >= 850) {
-      _widget = tablet;
+    if (width >= 1100) {
+      return desktop ?? tablet ?? mobile ?? const SizedBox();
+    } else if (width >= 850) {
+      return tablet ?? mobile ?? desktop ?? const SizedBox();
     } else {
-      _widget = mobile;
+      return mobile ?? tablet ?? desktop ?? const SizedBox();
     }
-
-    return _widget ?? Container();
   }
 }

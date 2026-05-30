@@ -1,16 +1,9 @@
-
-///
 class StringUtils {
+  /// 将 List 中的元素安全地以逗号连接成字符串
   static String? listToString(List? list) {
     if (list == null) {
       return null;
     }
-    String? result;
-    list.forEach(
-      (string) => {
-        if (result == null) result = string else result = '$result,$string',
-      },
-    );
-    return result.toString();
+    return list.join(',');
   }
 }

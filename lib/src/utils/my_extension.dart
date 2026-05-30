@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import 'click_utils.dart';
 
-///double扩展
+/// num 扩展
 extension DoubleExt on num {
   String toMyStringAsFixed(int fractionDigits) {
     if (this == 0) {
       return '0';
     }
-    return this.toStringAsFixed(fractionDigits);
+    return toStringAsFixed(fractionDigits);
   }
 
-  ///区分int 和 double
+  /// 区分 int 和 double
   /// 例如 1.2 -> 1.2  , 1.0 -> 1
   String toMyDouble(int fractionDigits) {
     if (this % 1 == 0) {
-      return '${this.toInt()}';
+      return '${toInt()}';
     } else {
-      return this.toStringAsFixed(fractionDigits);
+      return toStringAsFixed(fractionDigits);
     }
   }
 }
 
-///widget扩展
+/// widget 扩展
 extension WidgetExt on Widget {
   Widget padding(EdgeInsetsGeometry padding) {
     return Padding(
@@ -43,33 +44,32 @@ extension WidgetExt on Widget {
       child: this,
     );
   }
-}
 
-///list扩展
-extension ListExt on List {
-  ///逗号隔开的字符串
-  String toCommaStr() {
-    List tempList = [];
-    String str = '';
-    this.forEach((f) {
-      tempList.add(f);
-    });
-
-    tempList.forEach((f) {
-      if (str == '') {
-        str = "$f";
-      } else {
-        str = "$str" "," "$f";
-      }
-    });
-
-    return str;
+  /// 快速防抖/节流点击事件
+  Widget onTap(
+    VoidCallback? onTap, {
+    Duration duration = const Duration(milliseconds: 380),
+    String? memo,
+  }) {
+    if (onTap == null) return this;
+    return GestureDetector(
+      onTap: () {
+        final key = memo ?? '${hashCode}_onTap';
+        EventFilter.execute(
+          key,
+          onTap,
+          duration: duration,
+          filterType: FilterType.throttle,
+        );
+      },
+      child: this,
+    );
   }
 }
 
-///Duration 扩展
+/// Duration 扩展
 extension DurationExt on Duration {
-  /// 1:10:00
+  /// 格式化为不含微秒的字符串，如 1:10:00 或 10:00
   String toStringNoMicroseconds() {
     String twoDigits(int n) {
       if (n >= 10) return "$n";
