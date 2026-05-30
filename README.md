@@ -6,7 +6,9 @@
 
 A lightweight, zero-dependency Dart & Flutter utility and extension library. Designed to improve development efficiency with type-safe extensions and smart layout helpers.
 
-🌐 **[简体中文文档 (Chinese Simplified)](https://github.com/panzhoutao/flutter_utils_code/blob/main/README-ZH.md)**
+🌐 **[简体中文文档 (Chinese Simplified)](https://github.com/panzhoutao/flutter_utils_code/blob/master/README-ZH.md)**
+
+
 
 
 ---

@@ -1,3 +1,8 @@
+## 0.2.2
+
+* **Documentation**:
+  - Updated Chinese and English README documentation links to use the correct master branch absolute URL.
+
 ## 0.2.1
 
 * **Documentation**:
