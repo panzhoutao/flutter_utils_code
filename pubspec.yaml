@@ -1,6 +1,6 @@
 name: flutter_utils_code
 description: A lightweight, zero-dependency Dart & Flutter utility and extension library containing high-performance helper classes and productivity extensions.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/panzhoutao/flutter_utils_code
 repository: https://github.com/panzhoutao/flutter_utils_code
 issue_tracker: https://github.com/panzhoutao/flutter_utils_code/issues

@@ -6,7 +6,8 @@
 
 一个轻量级、零外部依赖的 Dart & Flutter 常用工具和类型扩展库。旨在通过类型安全的扩展方法与智能布局辅助组件，显著提升日常开发效率。
 
-🌐 **[English Documentation (英文文档)](README.md)**
+🌐 **[English Documentation (英文文档)](https://github.com/panzhoutao/flutter_utils_code/blob/main/README.md)**
+
 
 ---
 

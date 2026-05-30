@@ -1,3 +1,8 @@
+## 0.2.1
+
+* **Documentation**:
+  - Fixed absolute document redirection links in English and Chinese READMEs.
+
 ## 0.2.0
 
 * **Breaking Changes**: 
