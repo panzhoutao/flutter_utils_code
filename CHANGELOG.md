@@ -1,3 +1,27 @@
+## 0.2.0
+
+* **Breaking Changes**: 
+  - Changed license from GPLv3 to MIT.
+  - Removed localized human-language hardcoded methods (e.g. `TimeUtils.getWeekStr` and Chinese weekday formatting).
+  - Cleaned up duplicate list extension classes to prevent Stack Overflow crash.
+  - Cleaned up and removed `my_extension.dart`, splitting contents into structured `double_extension.dart`, `widget_extension.dart` and `duration_extension.dart`.
+
+* **New Features**:
+  - Added `BuildContext` extensions for themes, dark mode, screen metrics, routing, and SnackBars.
+  - Added `DateTime` extensions for today/yesterday checks, start/end of day, leap year checks, and month days calculation.
+  - Added `num` Duration shorthand syntax (e.g. `500.milliseconds`, `2.seconds`, `1.hours`).
+  - Added `Color` extensions for hex string parsing (`fromHex`), formatting (`toHex`), and shade adjusting (`darken`/`lighten`) with zero deprecation warnings on new Flutter SDKs.
+  - Added `Map` extensions (`getOrDefault` and `removeNullValues`).
+  - Added secure `PlatformUtils` preventing crashes on Web platform.
+  - Added smart adaptive spacing layout widget `Gap`.
+
+* **Documentation & Quality**:
+  - Restructured into clean file hierarchy.
+  - Added strict static analysis configuration.
+  - Added comprehensive unit and widget integration tests (100% passed).
+  - Documented all public APIs with standard Dartdoc comments.
+  - Separated documentation into English `README.md` and Simplified Chinese `README-ZH.md`.
+
 ## 0.1.2
 * 删除cupertino_localizations_delegate.dart
 
