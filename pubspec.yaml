@@ -5,8 +5,8 @@ version: 0.1.2
 homepage: https://github.com/panzhoutao/flutter_utils_code
 
 environment:
-  sdk: ^3.10.4
-  flutter: ">=3.0.0"
+  sdk: ^3.11.5
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
