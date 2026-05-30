@@ -1,5 +1,7 @@
+/// 文件操作相关实用工具类
 class FileUtils {
   /// 转换 double 文件大小为可读字符串（如 "1.23 KB"）
+
   static String renderSize(double? value) {
     if (value == null || value <= 0) {
       return '0 B';

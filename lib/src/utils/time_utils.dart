@@ -1,5 +1,6 @@
 
 
+/// 时间与日期相关计算工具类
 class TimeUtils {
   /// 将 Duration 格式化为不含语言特征的字符串，如 "11:22:33" 或 "22:33"
   static String formatDuration(Duration duration) {

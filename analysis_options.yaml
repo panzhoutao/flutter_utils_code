@@ -1,0 +1,20 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_final_locals
+    - avoid_unused_constructor_parameters
+    - camel_case_types
+    - library_names
+    - file_names
+    - non_constant_identifier_names
+    - use_key_in_widget_constructors
+    - prefer_relative_imports

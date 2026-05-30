@@ -1,12 +1,13 @@
 name: flutter_utils_code
-description: A Flutter utils package
-version: 0.1.2
-#author: Mr.pan <panzhoutao1@gmail.com>
+description: A lightweight, zero-dependency Dart & Flutter utility and extension library containing high-performance helper classes and productivity extensions.
+version: 0.2.0
 homepage: https://github.com/panzhoutao/flutter_utils_code
+repository: https://github.com/panzhoutao/flutter_utils_code
+issue_tracker: https://github.com/panzhoutao/flutter_utils_code/issues
 
 environment:
-  sdk: ^3.11.5
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
@@ -15,6 +16,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^3.0.0
 
-flutter:
-
+topics:
+  - utils
+  - extensions
+  - helper
+  - productivity
+  - flutter

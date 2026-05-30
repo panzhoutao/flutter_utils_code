@@ -1,5 +1,4 @@
-/// @Description: String? 扩展
-/// @Author:      @Mr.pan
+
 extension StringExt on String? {
   /// 安全地转换为 double，解析失败时返回默认值
   double toDouble({double defaultValue = 0.0}) {
